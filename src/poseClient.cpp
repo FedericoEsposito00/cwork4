@@ -12,7 +12,7 @@ int main(int argc, char** argv) {
     ros::ServiceClient client = n.serviceClient<cwork4::getRelativePose>("getRelativePose");
 
     cwork4::getRelativePose srv;
-    srv.request.ref_frame.data = "/base_link";
+    srv.request.ref_frame.data = "/camera_link";
     srv.request.frame.data = "/camera_link";
 
     cout<<srv.request.ref_frame.data<<endl<<srv.request.frame.data<<endl;
@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    ROS_INFO("All good!\n");
+    cout<<srv.response.pose<<endl;
 
     return 0;
 }
