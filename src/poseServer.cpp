@@ -15,6 +15,7 @@ bool service_callback(cwork4::getRelativePose::Request &req, cwork4::getRelative
     cout<<req.ref_frame.data<<endl<<req.frame.data<<endl;
 
     try {
+        listener.waitForTransform(req.ref_frame.data, req.frame.data, ros::Time(0), ros::Duration(3.0));
         listener.lookupTransform(req.ref_frame.data, req.frame.data, ros::Time(0), transform);
         working_fine = true;    
         res.pose.position.x = transform.getOrigin().x();
