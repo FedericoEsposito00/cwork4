@@ -14,7 +14,7 @@ int main(int argc, char** argv) {
 
     cwork4::getRelativePose srv;
     srv.request.ref_frame.data = "/base_link";
-    srv.request.frame.data = "/camera_link";
+    srv.request.frame.data = "/seventh_link";
 
     //cout<<srv.request.ref_frame.data<<endl<<srv.request.frame.data<<endl;
     ROS_INFO("Waiting for the client server\n");
@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
         transform.setOrigin(tf::Vector3(srv.response.pose.position.x, srv.response.pose.position.y, srv.response.pose.position.z));
         transform.setRotation(q);
     
-        br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "base_link", "camera_link2"));
+        br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "base_link", "camera_link"));
         rate.sleep();
     }
 
