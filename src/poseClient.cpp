@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
         transform.setOrigin(tf::Vector3(srv.response.pose.position.x, srv.response.pose.position.y, srv.response.pose.position.z));
         transform.setRotation(q);
     
-        br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "base_link", "camera_link"));
+        br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "base_link", "tip_link"));
         rate.sleep();
     }
 
